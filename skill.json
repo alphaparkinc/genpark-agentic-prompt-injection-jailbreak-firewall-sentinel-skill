@@ -1,0 +1,43 @@
+{
+  "name": "genpark-agentic-prompt-injection-jailbreak-firewall-sentinel-skill",
+  "version": "1.0.0",
+  "description": "Zero-Trust Agentic Indirect Prompt Injection & Jailbreak Firewall Sentinel. Inspects untrusted external documents, emails, web pages, and user inputs for instruction-override attacks, system prompt leakage attempts, base64/hex payload smuggling, and unauthorized tool hijacking, enforcing spotlight data delimiters.",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.llinkedin.com/company/92955550",
+  "tools": [
+    {
+      "name": "inspect_prompt_security_firewall",
+      "description": "Scan untrusted input or retrieved external documents for prompt injection and jailbreak signatures, and wrap safe content in spotlight delimiters.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "inspect_and_sanitize_input",
+              "wrap_untrusted_spotlight"
+            ],
+            "description": "Prompt firewall action."
+          },
+          "raw_input": {
+            "type": "string",
+            "description": "Untrusted user prompt or external document text."
+          },
+          "source_origin": {
+            "type": "string",
+            "enum": [
+              "USER_DIRECT",
+              "EXTERNAL_WEB",
+              "EMAIL_BODY",
+              "THIRD_PARTY_PLUGIN"
+            ],
+            "description": "Trust origin of text."
+          }
+        },
+        "required": [
+          "action"
+        ]
+      }
+    }
+  ]
+}
